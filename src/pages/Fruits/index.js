@@ -1,26 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 // import { Container } from './styles';
 
+import { useFruit } from '../../hooks/fruit'
+
 const Fruits = () => {
-
-  const [fruits, setFruits] = useState([])
-
-  const addFruit = () => {
-    const fruitPosition = fruits.length + 1
-    const fruit = `Fruit ${fruitPosition}`
-    setFruits([...fruits, fruit])
-  }
+  const { fruits } = useFruit()
 
   return (
     <View justifyContent="center" alignItems="center" flex={1}>
       {fruits.map(fruit => (
         <Text key={fruit}>{fruit}</Text>
       ))}
-      <TouchableOpacity onPress={addFruit}>
-        <Text>Add a fruit</Text>
-      </TouchableOpacity>
     </View>
   );
 }
